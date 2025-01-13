@@ -1,0 +1,99 @@
+/* new_About - style.css */
+
+/* กำหนดพื้นฐานสำหรับ body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* สไตล์สำหรับ container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* จัดการสีพื้นหลังของแต่ละ section */
+.section {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.About {
+    background-color: #f78c4f; /* สีส้ม */
+    color: rgb(0, 0, 0);
+}
+
+.class {
+    background-color: #f9e600; /* สีเหลือง */
+}
+
+.favorite {
+    background-color: #a7e3b3; /* สีเขียวอ่อน */
+}
+
+.moods {
+    background-color: #98e1a3; /* สีเขียวอ่อน */
+}
+
+.neig {
+    background-color: #c6e9c7; /* สีเขียวอ่อน */
+}
+
+/* จัดการหัวข้อ */
+h1, h2 {
+    font-size: 1.8em;
+    font-family: 'Georgia', serif;
+}
+
+/* จัดการข้อความ */
+p, li {
+    font-size: 1.2em;
+}
+
+/* ลิงก์ */
+a {
+    color: #e74c3c;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* สไตล์ตารางอารมณ์ */
+.mood-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.mood-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* รูปภาพใน mood */
+img {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+/* ฟุตเตอร์ */
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
