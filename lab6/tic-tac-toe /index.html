@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .board { display: grid; grid-template-columns: repeat(3, 100px); gap: 5px; justify-content: center; }
+        .cell { width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; font-size: 2em; cursor: pointer; border: 2px solid black; }
+        .cell.x { color: red; }  /* X สีแดง */
+        .cell.o { color: blue; } /* O สีน้ำเงิน */
+        .scoreboard { margin-top: 20px; font-size: 1.2em; }
+        button { margin-top: 20px; padding: 10px; font-size: 1em; }
+    </style>
+</head>
+<body>
+    <h2>Tic Tac Toe</h2>
+    <div class="board" id="board"></div>
+    <div class="scoreboard">
+        X: <span id="scoreX">0</span> | O: <span id="scoreO">0</span>
+    </div>
+    <button onclick="resetGame()">Reset</button>
+
+    <script>
+        let board = ["", "", "", "", "", "", "", "", ""];
+        let currentPlayer = "X";
+        let scoreX = 0, scoreO = 0;
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  // แนวนอน
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  // แนวตั้ง
+            [0, 4, 8], [2, 4, 6]             // แนวทแยง
+        ];
+        
+        function createBoard() {
+            let boardDiv = document.getElementById("board");
+            boardDiv.innerHTML = "";
+            board.forEach((value, index) => {
+                let cell = document.createElement("div");
+                cell.classList.add("cell");
+                if (value) cell.classList.add(value.toLowerCase());
+                cell.textContent = value;
+                cell.onclick = () => makeMove(index);
+                boardDiv.appendChild(cell);
+            });
+        }
+
+        function makeMove(index) {
+            if (board[index] === "") {
+                board[index] = currentPlayer;
+                checkWinner();
+                currentPlayer = currentPlayer === "X" ? "O" : "X";
+                createBoard();
+            }
+        }
+
+        function checkWinner() {
+            for (let pattern of winPatterns) {
+                let [a, b, c] = pattern;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    alert(`${board[a]} Wins!`);
+                    board[a] === "X" ? scoreX++ : scoreO++;
+                    document.getElementById("scoreX").textContent = scoreX;
+                    document.getElementById("scoreO").textContent = scoreO;
+                    resetBoard();
+                    return;
+                }
+            }
+            if (!board.includes("")) {
+                alert("It's a Draw!");
+                resetBoard();
+            }
+        }
+
+        function resetBoard() {
+            board = ["", "", "", "", "", "", "", "", ""];
+            createBoard();
+        }
+
+        function resetGame() {
+            scoreX = 0;
+            scoreO = 0;
+            document.getElementById("scoreX").textContent = scoreX;
+            document.getElementById("scoreO").textContent = scoreO;
+            resetBoard();
+        }
+
+        createBoard();
+    </script>
+</body>
+</html>
