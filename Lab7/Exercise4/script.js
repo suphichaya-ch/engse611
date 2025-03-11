@@ -7,7 +7,7 @@
             let newParagraph = document.createElement("p");
             
             // Setting the text content of the new paragraph
-            newParagraph.textContent = "Woravit Suwan";
+            newParagraph.textContent = "Suphichaya";
             
             // Selecting the parent element
             let parentDiv = document.getElementById("parent");
